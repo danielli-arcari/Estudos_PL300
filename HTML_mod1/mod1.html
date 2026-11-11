@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PL-300 | Módulo 1: Resumo e exercícios difíceis</title>
+<style>
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #1d2330;
+  --muted: #5b6475;
+  --line: #dde1ea;
+  --accent: #1f6feb;
+  --ok: #1a7f37;
+  --ok-bg: #e6f4ea;
+  --bad: #b42318;
+  --bad-bg: #fdecea;
+  --code: #eef1f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1218;
+    --card: #181d26;
+    --text: #e6e9f0;
+    --muted: #a3acbd;
+    --line: #2a3140;
+    --accent: #6aa7ff;
+    --ok: #5fd17f;
+    --ok-bg: #1d3327;
+    --bad: #ff8a80;
+    --bad-bg: #3a1f1d;
+    --code: #222938;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+header {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 20px;
+}
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+header h1 { margin: 0 0 6px; font-size: 1.6rem; }
+header p { margin: 0; color: var(--muted); }
+nav.toc {
+  margin: 20px auto 0;
+  max-width: 920px;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+nav.toc a {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+main { max-width: 920px; margin: 0 auto; padding: 8px 20px 60px; }
+section { margin-top: 28px; }
+h2 { font-size: 1.3rem; margin: 0 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--line); }
+h3 { font-size: 1.05rem; margin: 22px 0 8px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+.callout {
+  border-left: 4px solid var(--accent);
+  background: var(--card);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.callout strong { color: var(--accent); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  font-size: 0.93rem;
+  margin: 8px 0 4px;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+}
+th { background: var(--code); font-weight: 600; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--code);
+  color: var(--muted);
+  margin-right: 6px;
+}
+fieldset.q {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 0 0 16px;
+}
+fieldset.q legend {
+  font-weight: 700;
+  padding: 0 6px;
+}
+fieldset.q .enun { margin: 4px 0 10px; }
+label.opt {
+  display: block;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  margin: 3px 0;
+}
+label.opt:hover { background: var(--code); }
+label.opt.right { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+label.opt.wrong { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+.fb { min-height: 1.4em; margin: 8px 0 0; font-weight: 600; }
+.fb.right { color: var(--ok); }
+.fb.wrong { color: var(--bad); }
+button.check {
+  margin-top: 8px;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+details {
+  margin-top: 10px;
+  border-top: 1px dashed var(--line);
+  padding-top: 8px;
+}
+details summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+}
+details .gab { margin-top: 8px; }
+details .gab p { margin: 6px 0; }
+.label-ex {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+.checklist li { list-style: none; margin-left: -22px; }
+.checklist li::before { content: "\2610  "; color: var(--accent); }
+footer { color: var(--muted); font-size: 0.85rem; text-align: center; margin-top: 40px; }
+@media print {
+  nav.toc { display: none; }
+  body { background: #fff; color: #000; }
+  details { display: block; }
+  details > * { display: block; }
+  fieldset.q, .card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>PL-300 | Módulo 1: Introdução à análise de dados da Microsoft</h1>
+    <p>Resumo do módulo e bateria de exercícios de nível difícil, com gabarito comentado. Prova marcada para 30/01/2027.</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#resumo">1. Resumo</a>
+  <a href="#tipos">2. Tipos de análise</a>
+  <a href="#funcoes">3. Funções</a>
+  <a href="#tarefas">4. Tarefas do ciclo</a>
+  <a href="#exercicios">5. Exercícios</a>
+  <a href="#checklist">6. Checklist final</a>
+</nav>
+
+<main>
+
+<!-- ============================ RESUMO ============================ -->
+<section id="resumo">
+  <h2>1. Resumo do módulo</h2>
+  <div class="card">
+    <p><strong>Ideia central:</strong> quando uma pergunta de negócio não recebe a resposta certa, o problema costuma estar na abordagem, e não na ferramenta. O módulo ensina a escolher o tipo de análise certo, entender o papel de cada função numa equipe de dados e reconhecer as cinco tarefas que sustentam qualquer painel.</p>
+    <p>O caso condutor é a Tailwind Traders, uma varejista de equipamentos ao ar livre. As vendas do ano passado não cresceram, apesar de campanhas em todos os canais. Cada pergunta que surge depois pede um tipo de análise diferente.</p>
+  </div>
+</section>
+
+<section id="tipos">
+  <h2>2. Os cinco tipos de análise</h2>
+  <p>A progressão vai do sintoma até a decisão. Cada tipo responde a uma pergunta específica, e usar o tipo errado produz uma saída que parece correta, mas responde a outra pergunta.</p>
+  <table>
+    <thead>
+      <tr><th>Tipo</th><th>Pergunta que responde</th><th>Exemplo na Tailwind Traders</th><th>Sinal de que é o tipo certo</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Descritiva</strong></td>
+        <td>O que aconteceu?</td>
+        <td>Painel de vendas por canal e produto; tendência mensal sem crescimento geral.</td>
+        <td>Quantifica e compara. Não explica causas.</td>
+      </tr>
+      <tr>
+        <td><strong>Diagnóstica</strong></td>
+        <td>Por que aconteceu?</td>
+        <td>Taxa de fechamento ligada aos níveis de desconto, à categoria e à equipe.</td>
+        <td>Parte de um sintoma e procura o padrão que o explica.</td>
+      </tr>
+      <tr>
+        <td><strong>Preditiva</strong></td>
+        <td>O que provavelmente acontece a seguir?</td>
+        <td>Previsão de receita mensal com faixa sombreada de valores prováveis.</td>
+        <td>Usa padrões históricos para estimar o futuro.</td>
+      </tr>
+      <tr>
+        <td><strong>Prescritiva</strong></td>
+        <td>O que devemos fazer?</td>
+        <td>Simulação de preços, de redução de 10% a aumento de 20%, com trade-off entre receita e lucro.</td>
+        <td>Compara cenários do tipo "se fizermos isto, qual o resultado provável?".</td>
+      </tr>
+      <tr>
+        <td><strong>Cognitiva</strong></td>
+        <td>O que a IA ajuda a entender além da capacidade manual?</td>
+        <td>Categorizar milhares de avaliações e tickets por tema e sentimento.</td>
+        <td>Dados não estruturados ou volume que a análise manual não alcança.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>Ponto de atenção:</strong> a IA aparece em todos os tipos como ferramenta de apoio (resumos, sugestões de fatores, detecção de anomalias, perguntas em linguagem natural). A análise cognitiva é um tipo à parte, voltado para escala e dados não estruturados. Em qualquer caso, o analista confirma o tipo, valida se a saída responde à pergunta e decide se o dado é confiável o bastante para agir.
+  </div>
+</section>
+
+<section id="funcoes">
+  <h2>3. Funções na equipe de dados</h2>
+  <p>As funções podem ter outros nomes na sua empresa, mas as responsabilidades tendem a se manter. A saída de cada função vira a entrada da seguinte.</p>
+  <table>
+    <thead>
+      <tr><th>Função</th><th>Responsabilidade primária</th><th>Não confundir com</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Engenheiro de dados</strong></td>
+        <td>Cria e mantém os pipelines que levam dados das origens (PDV, e-commerce, marketing) a formatos prontos para análise.</td>
+        <td>Não define o significado das métricas.</td>
+      </tr>
+      <tr>
+        <td><strong>Engenheiro de análise</strong></td>
+        <td>Cria definições de negócio reutilizáveis, como a "receita líquida", em um modelo semântico certificado.</td>
+        <td>Não é quem extrai os dados da origem.</td>
+      </tr>
+      <tr>
+        <td><strong>Analista de dados</strong></td>
+        <td>Monta relatórios e painéis, escolhe visuais, aplica segurança em nível de linha (RLS) e agenda atualizações.</td>
+        <td>Não decide sozinho a estratégia do negócio.</td>
+      </tr>
+      <tr>
+        <td><strong>Cientista de dados</strong></td>
+        <td>Faz análises avançadas, como modelos de série temporal e machine learning, e devolve previsões ou pontuações à análise.</td>
+        <td>Não é obrigatoriamente quem monta o painel.</td>
+      </tr>
+      <tr>
+        <td><strong>Analista de negócios</strong></td>
+        <td>Define as perguntas e os KPIs, interpreta as descobertas e traduz insights em recomendações que a liderança pode executar.</td>
+        <td>Não constrói o modelo nem o pipeline.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="tarefas">
+  <h2>4. As cinco tarefas do ciclo</h2>
+  <div class="card">
+    <ol>
+      <li><strong>Preparar:</strong> limpar e padronizar. Exemplos do módulo: datas em formatos diferentes (MM/DD/YYYY e YYYY-MM-DD) e nomes de produto que não batem entre sistemas. Sem isso, o mesmo produto aparece em duas linhas.</li>
+      <li><strong>Modelar:</strong> definir relacionamentos entre a tabela de fatos (vendas) e as dimensões (produtos, lojas, datas), criar cálculos como receita líquida e crescimento ano a ano, e montar hierarquias de data. Se dois relatórios divergem sobre os mesmos dados, o problema costuma estar aqui.</li>
+      <li><strong>Visualizar:</strong> escolher o visual que responde à pergunta. Composição com poucas categorias pede pizza ou rosca. Comparação entre categorias pede barras. Tendência no tempo pede linhas. Totais principais ficam em cartões.</li>
+      <li><strong>Analisar:</strong> ir além do que os números mostram e perguntar o que significam e que ação sugerem. O visual Principais influenciadores ajuda a encontrar os fatores dominantes, mas o analista valida se o insight é acionável e confiável.</li>
+      <li><strong>Gerenciar:</strong> monitorar conexões com as fontes, confirmar que cálculos e visuais continuam corretos e garantir atualizações programadas. Sem manutenção, as equipes criam versões próprias com números ligeiramente diferentes.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2>Princípios que caem em prova</h2>
+  <div class="card">
+    <ul>
+      <li>O problema está geralmente na abordagem, e não na ferramenta.</li>
+      <li>Dado ruim invalida qualquer insight. Visual nenhum corrige uma base inconsistente.</li>
+      <li>Um visual errado responde a uma pergunta diferente da que foi feita.</li>
+      <li>Um insight gerado por IA é uma hipótese até o analista validar.</li>
+      <li>Correlação observada em um painel não prova causa. Confundidores como categoria, equipe e sazonalidade precisam ser considerados.</li>
+      <li>Um painel publicado precisa de dono, monitoramento e atualização, senão deixa de ser fonte confiável.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Erros comuns</h2>
+  <div class="card">
+    <ul>
+      <li>Chamar de diagnóstica uma simples comparação entre períodos. Comparar é descritivo; explicar a diferença é diagnóstico.</li>
+      <li>Tratar a previsão como prescrição. A previsão diz o que deve acontecer; a prescrição compara ações possíveis.</li>
+      <li>Ler o visual de influenciadores como relação causal.</li>
+      <li>Confundir engenheiro de dados (movimenta dados) com engenheiro de análise (define métricas).</li>
+      <li>Achar que um problema de definição se resolve com um novo pipeline.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ EXERCÍCIOS ============================ -->
+<section id="exercicios">
+  <h2>5. Bateria de exercícios (nível difícil)</h2>
+  <p>Cada questão tem gabarito e comentário. Nas de múltipla escolha, o feedback aparece assim que você marca uma alternativa. Tente responder antes de abrir o gabarito. As questões abertas trazem uma rubrica para você checar a própria resposta.</p>
+
+  <h3>Bloco A: Tipos de análise</h3>
+
+  <fieldset class="q" data-q="1">
+    <legend><span class="label-ex">Questão 1</span></legend>
+    <p class="enun">Uma gerente de marketing pergunta: "A campanha de maio gerou mais cliques que a de abril, e isso se converteu em mais pedidos?" Qual combinação de tipos responde melhor?</p>
+    <label class="opt"><input type="radio" name="q1" value="a" data-ok="0"> a) Preditiva, porque compara dois meses.</label>
+    <label class="opt"><input type="radio" name="q1" value="b" data-ok="1"> b) Descritiva para comparar os meses e diagnóstica para entender a conversão em pedidos.</label>
+    <label class="opt"><input type="radio" name="q1" value="c" data-ok="0"> c) Prescritiva, porque sugere uma ação.</label>
+    <label class="opt"><input type="radio" name="q1" value="d" data-ok="0"> d) Cognitiva, porque envolve comportamento de clientes.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: b.</strong> Comparar períodos quantifica o que aconteceu, o que é descritivo. Entender por que cliques não viraram pedidos exige investigar a relação entre as variáveis, o que é diagnóstico.</p>
+        <p>Por que as outras estão erradas: a previsão olha para frente, e a pergunta é sobre o passado. A prescrição só entra depois que se sabe o que mudar, porque ela compara cenários de ação. A cognitiva se justifica para texto ou volume que a análise manual não alcança, e aqui a pergunta é numérica.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="2">
+    <legend><span class="label-ex">Questão 2</span></legend>
+    <p class="enun">Um analista projeta a receita de 2027 com 24 meses de histórico. Um desses meses teve uma promoção pontual de três dias que triplicou as vendas online. Qual postura é a mais defensável?</p>
+    <label class="opt"><input type="radio" name="q2" value="a" data-ok="0"> a) Usar os 24 meses como estão, porque o modelo aprende a sazonalidade sozinho.</label>
+    <label class="opt"><input type="radio" name="q2" value="b" data-ok="0"> b) Remover o mês da série, para que a curva fique limpa.</label>
+    <label class="opt"><input type="radio" name="q2" value="c" data-ok="1"> c) Identificar o evento, tratá-lo como anomalia ou variável explicativa, informar a faixa de incerteza e declarar a premissa.</label>
+    <label class="opt"><input type="radio" name="q2" value="d" data-ok="0"> d) Descartar a previsão, porque qualquer modelo com promoções é inútil.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: c.</strong> A análise preditiva é tão boa quanto as premissas. Um evento pontual que não é tratado contamina a tendência e pode levar a uma previsão enganosa. A faixa sombreada da previsão comunica justamente essa incerteza, e o analista tem a obrigação de explicá-la.</p>
+        <p>A alternativa b é manipulação: remover um dado incômodo sem justificativa. A alternativa d é exagero, porque promoções podem ser modeladas como variável. Não existe "modelo inútil" por causa de um evento; existe modelo mal documentado.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="3">
+    <legend><span class="label-ex">Questão 3</span></legend>
+    <p class="enun">Qual sequência de tipos responde ao VP da Tailwind Traders do sintoma até a decisão?</p>
+    <label class="opt"><input type="radio" name="q3" value="a" data-ok="0"> a) Prescritiva, diagnóstica, descritiva, preditiva.</label>
+    <label class="opt"><input type="radio" name="q3" value="b" data-ok="1"> b) Descritiva, diagnóstica, preditiva, prescritiva.</label>
+    <label class="opt"><input type="radio" name="q3" value="c" data-ok="0"> c) Preditiva, descritiva, prescritiva, diagnóstica.</label>
+    <label class="opt"><input type="radio" name="q3" value="d" data-ok="0"> d) Cognitiva, descritiva, preditiva, prescritiva.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: b.</strong> Primeiro você descreve o que aconteceu, depois descobre por que, projeta o que vem e, por fim, decide o que fazer. A ordem reflete a dependência: não faz sentido simular preços antes de entender o que impulsiona o fechamento.</p>
+        <p>A cognitiva não é etapa obrigatória. Ela entra quando há volume de texto ou dados não estruturados, e não foi o caso da pergunta do VP sobre vendas.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="4">
+    <legend><span class="label-ex">Questão 4 (múltipla escolha)</span></legend>
+    <p class="enun">Marque <strong>todas</strong> as afirmações corretas sobre análise prescritiva.</p>
+    <label class="opt"><input type="checkbox" name="q4" value="1" data-ok="1"> 1. Compara cenários do tipo "se fizermos isto, qual o resultado provável?".</label>
+    <label class="opt"><input type="checkbox" name="q4" value="2" data-ok="1"> 2. Depende de premissas, como a sensibilidade dos clientes ao preço, que precisam ser explicitadas.</label>
+    <label class="opt"><input type="checkbox" name="q4" value="3" data-ok="0"> 3. Dispensa o diagnóstico, porque o modelo sabe sozinho o que fazer.</label>
+    <label class="opt"><input type="checkbox" name="q4" value="4" data-ok="1"> 4. Pode mostrar um trade-off, como receita contra lucro, em vez de um único número ótimo.</label>
+    <label class="opt"><input type="checkbox" name="q4" value="5" data-ok="0"> 5. Substitui a análise de negócios na decisão final.</label>
+    <button class="check" type="button">Verificar respostas</button>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Corretas: 1, 2 e 4.</strong></p>
+        <p>A afirmação 3 é a armadilha clássica: a prescrição depende do diagnóstico, porque só se sabe o que simular depois de entender o que pesa no resultado. A afirmação 5 também está errada. A recomendação final é trabalho do analista de negócios, que interpreta os resultados e leva a recomendação à liderança.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="5">
+    <legend><span class="label-ex">Questão 5 (aberta)</span></legend>
+    <p class="enun">O modelo de preços indica que aumentos entre 7% e 10% maximizam o lucro. Liste três premissas que, se falharem, invalidam essa recomendação e explique como você testaria cada uma antes de levar o resultado à liderança.</p>
+    <details>
+      <summary>Rubrica e comentário</summary>
+      <div class="gab">
+        <p><strong>Premissas possíveis (qualquer três bem justificadas):</strong></p>
+        <ul>
+          <li>Elasticidade constante na faixa testada. A sensibilidade dos clientes pode mudar bastante entre +7% e +10%, e a curva pode não ser linear.</li>
+          <li>Custo unitário e margem estáveis. Se o custo de compra subir, o ponto ótimo muda.</li>
+          <li>Reação da concorrência. Se rivais cortarem preço, a elasticidade efetiva muda.</li>
+          <li>Efeito de sair do desconto pesado. O diagnóstico mostrou que descontos fecham negócios; retirá-los pode reduzir o volume de forma não captada pela simulação.</li>
+          <li>Horizonte de tempo. Um ganho de lucro no curto prazo pode custar retenção de clientes no longo prazo.</li>
+        </ul>
+        <p><strong>Testes possíveis:</strong> piloto em um canal ou uma região, com grupo de controle; análise de sensibilidade variando as premissas; comparação com o histórico de aumentos anteriores; apresentar a faixa de resultados, e não só o número ótimo.</p>
+        <p><strong>O que separa uma boa resposta de uma fraca:</strong> a boa conecta a prescrição ao diagnóstico anterior (descontos) e declara o que o modelo não sabe. A fraca diz "o modelo indica 8%, então 8%".</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <h3>Bloco B: Funções</h3>
+
+  <fieldset class="q" data-q="6">
+    <legend><span class="label-ex">Questão 6</span></legend>
+    <p class="enun">Dois relatórios de receita dão números diferentes porque um inclui devoluções e o outro não. Qual função resolve a causa principal?</p>
+    <label class="opt"><input type="radio" name="q6" value="a" data-ok="0"> a) Engenheiro de dados, criando um novo pipeline.</label>
+    <label class="opt"><input type="radio" name="q6" value="b" data-ok="1"> b) Engenheiro de análise, definindo a medida "receita líquida" em um modelo semântico certificado.</label>
+    <label class="opt"><input type="radio" name="q6" value="c" data-ok="0"> c) Cientista de dados, treinando um modelo para estimar devoluções.</label>
+    <label class="opt"><input type="radio" name="q6" value="d" data-ok="0"> d) Analista de negócios, reescrevendo um dos relatórios.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: b.</strong> A causa é de definição, não de extração. Se os dados chegam bem, um novo pipeline não resolve nada. O engenheiro de análise é quem cria a definição única que todos os relatórios passam a usar.</p>
+        <p>A alternativa d não resolve porque reescrever um relatório replica a divergência. O analista de negócios interpreta, mas não é dono do modelo.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="7">
+    <legend><span class="label-ex">Questão 7</span></legend>
+    <p class="enun">A regra "o gerente da região Sudeste vê apenas dados do Sudeste" precisa existir no painel. Quem a define e quem a implementa, respectivamente?</p>
+    <label class="opt"><input type="radio" name="q7" value="a" data-ok="1"> a) O analista de negócios define a regra, e o analista de dados implementa a RLS no modelo e no relatório.</label>
+    <label class="opt"><input type="radio" name="q7" value="b" data-ok="0"> b) O cientista de dados define a regra, e o engenheiro de dados a implementa.</label>
+    <label class="opt"><input type="radio" name="q7" value="c" data-ok="0"> c) O engenheiro de dados define a regra, e o analista de dados a implementa.</label>
+    <label class="opt"><input type="radio" name="q7" value="d" data-ok="0"> d) Ninguém precisa definir, porque a segurança é automática.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: a.</strong> Quem decide quem vê o quê é uma questão de negócio e governança. Quem traduz essa decisão em segurança técnica no modelo é o analista de dados, que também agenda as atualizações.</p>
+        <p><strong>Nota honesta:</strong> o material não atribui essa regra explicitamente a uma função. A divisão acima é prática comum e a mais defensável na prova. Em empresas maiores, a definição pode caber a um dono de dados ou a um comitê de governança.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="8">
+    <legend><span class="label-ex">Questão 8 (aberta)</span></legend>
+    <p class="enun">Você é a única analista de uma pequena empresa, com um processo manual de extração em planilhas e nenhuma definição oficial de receita. Quais funções você assume agora, quais deixa para depois e qual é o primeiro passo?</p>
+    <details>
+      <summary>Rubrica e comentário</summary>
+      <div class="gab">
+        <p><strong>O que uma boa resposta faz:</strong></p>
+        <ul>
+          <li>Assume a preparação e a definição das medidas, que são as falhas de base. Sem isso, qualquer painel nasce inconsistente.</li>
+          <li>Trata a análise de negócios como responsabilidade sua também, pois você precisa levantar as perguntas e os KPIs com a liderança.</li>
+          <li>Adia engenharia de dados sofisticada e ciência de dados avançada, porque o volume e a maturidade do caso não justificam.</li>
+          <li>Primeiro passo: inventariar as fontes e fechar uma definição oficial de receita com quem decide. A partir daí, a modelagem tem um alvo.</li>
+        </ul>
+        <p><strong>Erro típico:</strong> propor um pipeline completo com machine learning antes de haver uma definição de receita acordada.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <h3>Bloco C: Tarefas do ciclo e visuais</h3>
+
+  <fieldset class="q" data-q="9">
+    <legend><span class="label-ex">Questão 9</span></legend>
+    <p class="enun">Três dias depois de publicar o painel, o mesmo produto aparece em duas linhas, e a data de uma das fontes está em MM/DD/YYYY. Em qual tarefa do ciclo essas correções pertencem?</p>
+    <label class="opt"><input type="radio" name="q9" value="a" data-ok="0"> a) Visualizar, porque o problema aparece no painel.</label>
+    <label class="opt"><input type="radio" name="q9" value="b" data-ok="1"> b) Preparar, porque são problemas de limpeza e padronização.</label>
+    <label class="opt"><input type="radio" name="q9" value="c" data-ok="0"> c) Gerenciar, porque o problema só apareceu depois da publicação.</label>
+    <label class="opt"><input type="radio" name="q9" value="d" data-ok="0"> d) Modelar, porque envolve relações entre tabelas.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: b.</strong> O momento em que o erro aparece não muda a natureza dele. Formatos de data e IDs de produto precisam ser unificados na preparação. A alternativa c é a tentação mais comum: gerenciar é monitorar e manter, e não corrigir a base depois de ela já ter sido publicada.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="10">
+    <legend><span class="label-ex">Questão 10</span></legend>
+    <p class="enun">A dimensão Produto tem dois registros para o mesmo item, "TW Alpine Backpack", com IDs diferentes. A tabela de fatos de vendas se relaciona a essa dimensão. Qual é o efeito mais provável no modelo?</p>
+    <label class="opt"><input type="radio" name="q10" value="a" data-ok="0"> a) Nenhum, porque o Power BI agrupa automaticamente os nomes iguais.</label>
+    <label class="opt"><input type="radio" name="q10" value="b" data-ok="1"> b) O relacionamento fica ambíguo ou vira muitos-para-muitos, e medidas de receita podem ser somadas em duplicidade.</label>
+    <label class="opt"><input type="radio" name="q10" value="c" data-ok="0"> c) Os visuais ficam mais rápidos, porque há menos linhas únicas.</label>
+    <label class="opt"><input type="radio" name="q10" value="d" data-ok="0"> d) A hierarquia de datas deixa de funcionar.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: b.</strong> Um relacionamento de um-para-muitos exige que o lado "um" tenha chave única. Com dois IDs para o mesmo produto, uma linha de venda pode casar com mais de uma linha de dimensão, o que gera ambiguidade e receita contada em dobro.</p>
+        <p>Esse é um bom caso de modelagem que se confunde com preparação. A causa raiz está na preparação (unificar IDs), mas o sintoma aparece na modelagem, e a prova costuma cobrar esse encadeamento.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="11">
+    <legend><span class="label-ex">Questão 11</span></legend>
+    <p class="enun">Você precisa mostrar ao VP a participação de 12 produtos na receita de um trimestre. Qual visual é o mais adequado?</p>
+    <label class="opt"><input type="radio" name="q11" value="a" data-ok="0"> a) Gráfico de pizza com 12 fatias.</label>
+    <label class="opt"><input type="radio" name="q11" value="b" data-ok="1"> b) Gráfico de barras ordenado, com valores rotulados.</label>
+    <label class="opt"><input type="radio" name="q11" value="c" data-ok="0"> c) Gráfico de linhas, porque o período é trimestral.</label>
+    <label class="opt"><input type="radio" name="q11" value="d" data-ok="0"> d) Um cartão com o total da receita.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: b.</strong> Com 12 fatias a pizza fica ilegível, e o olho compara ângulos com precisão ruim. Barras ordenadas permitem comparar os produtos diretamente. Pizza só funciona bem com poucas categorias.</p>
+        <p>Linhas servem para série temporal. Aqui não há evolução no tempo sendo comparada, apenas composição. O cartão mostra o total, mas não a participação de cada produto.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="12">
+    <legend><span class="label-ex">Questão 12</span></legend>
+    <p class="enun">A atualização agendada do painel falha há cinco dias sem nenhum alarme, e o VP vê números antigos. Qual tarefa falhou e qual controle reduz esse risco?</p>
+    <label class="opt"><input type="radio" name="q12" value="a" data-ok="0"> a) Visualizar; trocar o gráfico de linhas por cartões.</label>
+    <label class="opt"><input type="radio" name="q12" value="b" data-ok="1"> b) Gerenciar; configurar alertas de falha de atualização e definir um dono para o ativo.</label>
+    <label class="opt"><input type="radio" name="q12" value="c" data-ok="0"> c) Modelar; criar uma nova hierarquia de datas.</label>
+    <label class="opt"><input type="radio" name="q12" value="d" data-ok="0"> d) Preparar; reescrever o pipeline do zero.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: b.</strong> Gerenciar inclui monitorar conexões com as fontes e garantir que as atualizações ocorram conforme programado. A falha silenciosa é justamente o que o monitoramento e um responsável pelo ativo evitam.</p>
+        <p>Reescrever o pipeline (d) só se justifica se houver um defeito comprovado nele. Antes de agir, o analista precisa saber qual etapa parou.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <h3>Bloco D: Análise e IA</h3>
+
+  <fieldset class="q" data-q="13">
+    <legend><span class="label-ex">Questão 13</span></legend>
+    <p class="enun">Um resumo gerado por IA afirma: "Descontos fazem o cliente fechar a compra." Qual é a resposta de um analista?</p>
+    <label class="opt"><input type="radio" name="q13" value="a" data-ok="0"> a) Aceitar, porque a IA processou milhares de registros.</label>
+    <label class="opt"><input type="radio" name="q13" value="b" data-ok="1"> b) Tratar a afirmação como associação observada, verificar confundidores como categoria, equipe e sazonalidade, e testar com comparação controlada antes de falar em causa.</label>
+    <label class="opt"><input type="radio" name="q13" value="c" data-ok="0"> c) Descartar a IA e voltar às planilhas.</label>
+    <label class="opt"><input type="radio" name="q13" value="d" data-ok="0"> d) Recomendar o maior desconto possível.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: b.</strong> Volume de dados não garante causalidade. Um padrão observado pode vir de outra variável: talvez descontos sejam dados em negociações que já estavam quentes. A IA pode resumir, mas a validação e a conclusão são do analista.</p>
+        <p>A alternativa c descarta uma ferramenta útil sem motivo. A alternativa d transforma uma hipótese em decisão.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset class="q" data-q="14">
+    <legend><span class="label-ex">Questão 14</span></legend>
+    <p class="enun">O visual Principais influenciadores indica a "categoria A" como o fator mais forte de fechamento. Só há 40 negócios nessa categoria. O que fazer?</p>
+    <label class="opt"><input type="radio" name="q14" value="a" data-ok="0"> a) Confiar, porque é o fator mais forte do painel.</label>
+    <label class="opt"><input type="radio" name="q14" value="b" data-ok="1"> b) Verificar o tamanho da amostra e a estabilidade do padrão antes de recomendar, tratando o achado como hipótese a validar.</label>
+    <label class="opt"><input type="radio" name="q14" value="c" data-ok="0"> c) Remover a categoria dos dados, para não enviesar o modelo.</label>
+    <label class="opt"><input type="radio" name="q14" value="d" data-ok="0"> d) Esperar um ano por mais dados e não fazer nada até lá.</label>
+    <p class="fb"></p>
+    <details>
+      <summary>Gabarito e comentário</summary>
+      <div class="gab">
+        <p><strong>Resposta: b.</strong> Um efeito forte com amostra pequena costuma ser instável. Antes de recomendar, o analista confere quantos casos sustentam o padrão, se ele se repete em outros períodos e se a diferença é relevante.</p>
+        <p>A alternativa c apaga informação sem razão. A alternativa d é passiva demais: é possível entregar o achado com a ressalva de tamanho de amostra e sinalizar o que falta para confirmar.</p>
+      </div>
+    </details>
+  </fieldset>
+
+  <h3>Bloco E: Caso integrado</h3>
+
+  <fieldset class="q" data-q="15">
+    <legend><span class="label-ex">Questão 15 (aberta)</span></legend>
+    <p class="enun">Um painel de receita mostra crescimento de 18% ano a ano. Descreva como você validaria essa conclusão antes de apresentá-la. Para cada passo, indique a tarefa do ciclo (preparar, modelar, visualizar, analisar ou gerenciar) e a função responsável.</p>
+    <details>
+      <summary>Rubrica e comentário</summary>
+      <div class="gab">
+        <p><strong>Passos esperados:</strong></p>
+        <ul>
+          <li><strong>Preparar</strong> (engenheiro de dados): conferir se as datas e os IDs estão padronizados nos dois anos, se as devoluções e os cancelamentos entraram do mesmo jeito, e se houve carga duplicada ou atrasada.</li>
+          <li><strong>Modelar</strong> (engenheiro de análise): confirmar que "receita" tem a mesma definição nos dois períodos e que a comparação usa períodos equivalentes, com o mesmo número de dias úteis e a mesma composição de lojas ou canais.</li>
+          <li><strong>Visualizar</strong> (analista de dados): checar eixos e escalas, para que o visual não exagere a diferença, e comparar o número com a base, e não só com o gráfico.</li>
+          <li><strong>Analisar</strong> (analista de dados com analista de negócios): decompor o crescimento por canal e produto, separar efeito de preço de efeito de volume, e verificar se alguns clientes ou pedidos grandes explicam tudo.</li>
+          <li><strong>Gerenciar</strong> (analista de dados): certificar a medida no modelo semântico e confirmar que a atualização mais recente está correta antes de publicar.</li>
+        </ul>
+        <p><strong>O que separa uma resposta excelente:</strong> ela percorre o ciclo na ordem certa e explica por que a validação precede a apresentação. A fraca apenas diz "conferiria os dados".</p>
+      </div>
+    </details>
+  </fieldset>
+
+</section>
+
+<!-- ============================ CHECKLIST ============================ -->
+<section id="checklist">
+  <h2>6. Checklist final de autoavaliação</h2>
+  <div class="card checklist">
+    <ul>
+      <li>Consigo dizer qual tipo de análise responde a uma pergunta e justificar por que os outros não servem.</li>
+      <li>Diferencio descritiva de diagnóstica sem hesitar.</li>
+      <li>Sei o que uma previsão comunica e o que ela não comunica, incluindo a faixa de incerteza.</li>
+      <li>Explico por que a prescrição depende de premissas explícitas.</li>
+      <li>Distingo engenheiro de dados, engenheiro de análise, analista de dados, cientista de dados e analista de negócios pela responsabilidade primária.</li>
+      <li>Identifico em que tarefa do ciclo cada problema pertence: preparar, modelar, visualizar, analisar ou gerenciar.</li>
+      <li>Sei escolher o visual certo para composição, comparação e tendência no tempo.</li>
+      <li>Trato insights gerados por IA como hipótese até validar, e não confundo associação com causa.</li>
+    </ul>
+  </div>
+  <p style="color: var(--muted); font-size: 0.92rem;">Se algum item travar, volte ao bloco correspondente antes de avançar para o Módulo 2.</p>
+</section>
+
+</main>
+
+<footer>
+  <p>Material de estudo PL-300, Módulo 1. Conteúdo baseado nas anotações do aluno.</p>
+</footer>
+
+<script>
+(function () {
+  // Múltipla escolha única: feedback imediato ao marcar.
+  document.querySelectorAll('fieldset.q').forEach(function (fs) {
+    var radios = fs.querySelectorAll('input[type="radio"]');
+    if (radios.length) {
+      radios.forEach(function (r) {
+        r.addEventListener('change', function () {
+          fs.querySelectorAll('label.opt').forEach(function (l) {
+            l.classList.remove('right', 'wrong');
+          });
+          var fb = fs.querySelector('.fb');
+          var lbl = r.closest('label.opt');
+          if (r.dataset.ok === '1') {
+            lbl.classList.add('right');
+            fb.textContent = 'Correta.';
+            fb.className = 'fb right';
+          } else {
+            lbl.classList.add('wrong');
+            fb.textContent = 'Não é essa. Veja o gabarito e o comentário.';
+            fb.className = 'fb wrong';
+          }
+        });
+      });
+    }
+    // Múltipla escolha com várias respostas: botão de verificação.
+    var btn = fs.querySelector('button.check');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var boxes = fs.querySelectorAll('input[type="checkbox"]');
+        var erros = 0;
+        boxes.forEach(function (c) {
+          var lbl = c.closest('label.opt');
+          lbl.classList.remove('right', 'wrong');
+          var certo = c.dataset.ok === '1';
+          if (certo !== c.checked) {
+            erros++;
+            lbl.classList.add('wrong');
+          } else if (certo) {
+            lbl.classList.add('right');
+          }
+        });
+        var fb = fs.querySelector('.fb');
+        if (erros === 0) {
+          fb.textContent = 'Todas corretas.';
+          fb.className = 'fb right';
+        } else {
+          fb.textContent = erros + ' alternativa(s) fora do gabarito. Confira as marcadas em vermelho.';
+          fb.className = 'fb wrong';
+        }
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
